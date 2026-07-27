@@ -6,6 +6,7 @@ body {
   font-size: 18px;
   line-height: 1.5;           /* better readability than 1.0 */
   font-weight: 400;
+  color: #222222;
 }
 
 /* Headings per style guide */
