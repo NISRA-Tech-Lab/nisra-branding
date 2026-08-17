@@ -47,7 +47,7 @@
            <!-- Main navbar row -->
             <div class="d-flex align-items-center w-100 py-3 px-2">
           <!-- NISRA Logo (left) -->
-          <a class="navbar-brand ps-2 d-flex align-items-center me-auto" href="/">
+          <a class="navbar-brand ps-2 d-flex align-items-center me-auto" href="https://www.nisra.gov.uk/">
             <img src="img/logo/nisra-only-white.svg" alt="NISRA homepage" height="60" class="me-3">
           </a>
 
@@ -66,13 +66,65 @@
       <div class="container">
       <div class="bg-white p-4 rounded">
       <h2>Text content (h2)</h2>
-      <p>Web font is Roboto with Aria then sans serif as fallbacks. Text colour is #222222. Line height is 1.5 to give adequate spacing between lines.</p>
+      <p>Web font is Roboto with Arial then sans serif as fallbacks. Text colour is #222222. Line height is 1.5 to give adequate spacing between lines.</p>
       <h3>Headings (h3)</h3>
-      <p>Headings are in the same text colour and sizes are set in the CSS.</p>
+      <p>Headings are in the same text colour and sizes are set in the CSS. None are bold.</p>
       <h4>Body text (h4)</h4>
       <p>Body text is 18px for readability.</p>
-      <p><a href="#">Hyperlinks</a> are underlined and in blue. On hover, the thickness of the underline increases.</p>
-        </div>
+      <p><a href="#">Hyperlinks</a> are underlined and in blue. On hover, the thickness of the underline increases to 3px.</p>
+      <p>By default, hyperlinks should open in the same tab. If leaving the page would interrupt a user's session or cause them to lose their work, open in a new tab and <a href="/" target="_blank"
+        >use this symbol</a>.</p>
+        
+    <h2>Buttons</h2>
+    <p>Buttons change to grey on hover.</p>
+    <button>Action</button>
+
+    <h2>Focus ring</h2>
+    <p>Keyboard focus should be a bold read outline. Tab through the document to see it.</p>
+
+    <h2>Search bar</h2>
+
+    <div class="search">
+      <input type="text" id="searchInput" placeholder="Enter postcode..."  aria-label="Search input">
+        <button class="search-btn" type="button" aria-label="Search">
+         <i class="bi bi-search"></i>
+        </button>
+    </div>
+            
+    <h2>Text box</h2>
+    <p>Definitions or notes or other content that may usually be hidden can go into a box like this.</p>
+    <div class='accordion'> 
+  <button class='accordion-toggle' aria-expanded='false' 
+          aria-controls='panel1' id='accordion1'> 
+    Definitions
+    <span class='accordion-arrow'>⌵</span>
+  </button> 
+  <div class='accordion-panel' id='panel1' role='region' 
+       aria-labelledby='accordion1'> 
+       <p>Accordions should have a header and a panel. The panel is the content.</p>
+       <p>The header should be in a button element and should be wrapped in a heading at the appropriate level.</p>
+
+  </div> 
+</div> 
+    <h2>Information buttons</h2>
+    <p>Click the button to see the hidden content.</p>
+    <h3>
+    <button
+      type="button" class="info-btn" id="infoButton" aria-expanded="false" aria-controls="infoContent" aria-label="Show more information">
+    <i class="bi bi-info-circle" aria-hidden="true"></i>
+    </button></h3>
+
+    <div id="infoContent" class="info-content" hidden>
+  <p>
+    This is the additional information that will be displayed when the
+    information button is selected.
+  </p>
+</div>
+
+
+
+    <h2></h2>
+    </div>
       </div>
     </main>
 
@@ -146,4 +198,37 @@
     </footer>
 
   </body>
+
+  <script>
+    /* info button expand function */
+    const infoButton = document.getElementById('infoButton');
+    const infoContent = document.getElementById('infoContent');
+
+    infoButton.addEventListener('click', function () {
+      const isExpanded = infoButton.getAttribute('aria-expanded') === 'true';
+
+    infoButton.setAttribute('aria-expanded', !isExpanded);
+    infoContent.hidden = isExpanded;
+      });
+
+  /* accordion text box function */ 
+  document.getElementById('accordion1').addEventListener('click', function() {
+
+  const expanded = this.getAttribute('aria-expanded') === 'true';
+  const panel = document.getElementById(this.getAttribute('aria-controls'));
+
+  this.setAttribute('aria-expanded', !expanded);
+
+  if (!expanded) {
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+    panel.style.opacity = '1';
+    panel.style.transform = 'translateY(0)';
+  } else {
+    panel.style.maxHeight = '0';
+    panel.style.opacity = '0';
+    panel.style.transform = 'translateY(-10px)';
+  }
+});   
+  </script>
+
 </html>

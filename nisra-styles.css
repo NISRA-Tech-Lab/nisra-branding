@@ -79,6 +79,158 @@ main .bg-white {
 .app-title { font-weight: 700; letter-spacing: 0.2px; }
 .img-50 { width: 50px; height: 50px; }
 
+button {
+  background-color: #732777;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+}
+
+button:hover {
+  background-color: #6c757d;}
+
+
+  /* focus ring for keyboard users */
+*:focus-visible {
+  outline: 3px solid #d4351c !important;
+  outline-offset: 2.5px;
+  box-shadow: none !important;
+}
+
+:root {
+  --bs-focus-ring-color: #d4351c;
+  --bs-focus-ring-width: 0.25rem;
+}
+
+.info-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  color:#222222;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.info-btn:hover {
+  background-color: #732777;
+  color:#fff;
+}
+
+/* ===========================
+Search
+============================*/
+.search {
+  display: flex;
+  align-items: stretch;
+}
+
+.search input {
+  height: 54px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+}
+
+.search .search-btn {
+  width: 50px;
+  height: 54px;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #732777;
+  color: white;
+  border: none;
+  border-radius: 0 0;
+  cursor: pointer;
+}
+
+.search .search-btn i {
+  font-size: 22px;
+}
+
+.search .search-btn:hover {
+  background-color: #6c757d;
+}
+
+
+/* Accordion styles */ 
+.accordion { 
+  margin-bottom: 1em; 
+  border-radius: 8px;
+  box-shadow: none;
+  overflow: visible;
+} 
+
+.accordion-toggle { 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; 
+  text-align: left; 
+  background: #ffffff; 
+  color: #00205b; 
+  padding: 1em; 
+  font-size: 1.3em;
+  font-weight: bold;
+  cursor: pointer; 
+  transition: background 0.2s;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.accordion-toggle:hover {
+  background: #00205b;
+  color: #ffffff;
+}
+
+button.accordion-toggle[aria-expanded="true"]:focus {
+  background: #00205b;
+  color: #ffffff;
+}
+
+.accordion-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-10px);
+  padding: 1em; 
+  background: #ffffff;
+  border: 1px solid #0000002d;
+  margin-top: 12px;
+  border-radius: 6px;
+  box-shadow: none;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.accordion-arrow {
+  font-size: 28px;
+  transition: transform 0.3s ease;
+}
+
+.accordion-toggle[aria-expanded="true"] .accordion-arrow {
+  transform: rotate(180deg);
+}
+
+
 /* ===========================
    Footer
    =========================== */
