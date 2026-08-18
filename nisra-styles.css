@@ -1,6 +1,16 @@
 /* ===========================
    Base
    =========================== */
+
+:root {
+  --bs-body-bg: #f2f5f8;
+}
+
+body {
+  background-color: var(--bs-body-bg) !important;
+}
+
+
 body {
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 18px;
@@ -10,7 +20,7 @@ body {
 }
 
 /* Headings per style guide */
-h1 { font-size: 28px; line-height: 1.285; font-weight: 700; }
+h1 { font-size: 3rem !important; line-height: 1.285; font-weight: 700; }
 @media (min-width: 992px) { h1 { font-size: 30px; line-height: 1.3; } }
 
 h2 { font-size: 24px; line-height: 1.333; font-weight: 400; }
@@ -22,24 +32,46 @@ h3 { font-size: 21px; line-height: 1.143; font-weight: 400; }
 h4 { font-size: 18px; line-height: 1.333; font-weight: 400; }
 @media (min-width: 992px) { h4 { font-size: 21px; line-height: 1.286; } }
 
+
+/* Hyperlinks */
+a {color: #0F6FB8; text-decoration: underline; text-decoration-thickness: 1px; }
+a:hover, a:focus { text-decoration-thickness: 3px;}
+
 /* Page background (main content area) */
 main { 
-  background-color: #f2f5f8;
-  min-height: 100vh;
- }
+  background: transparent !important;
+}
+
+main .container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Border around main content */
+main .bg-white {
+  border: 1px solid #d0d0d0;
+}
+
+/* Align navbar with main content width */
+.navbar .container-fluid {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* External link indicator (scope to main so footer links aren’t doubled) */
-main a[target="_blank"]::after {
+ main a[target="_blank"]::after {
   content: "";
   width: 14px; height: 11px;
   margin: 5px; vertical-align: text-bottom; display: inline-block;
 
   /* Use the SVG as a mask; then color it with Bootstrap’s variable */
-  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11"><g fill="none" stroke="%23000" stroke-width="1"><path d="M0 3h2V0h12v8h-2v3H0zm13-2H3v6h10zM2 4H1v4h1zm-1 6h10V8H1z"/></g></svg>') no-repeat center / contain;
+   -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11"><g fill="none" stroke="%23000" stroke-width="1"><path d="M0 3h2V0h12v8h-2v3H0zm13-2H3v6h10zM2 4H1v4h1zm-1 6h10V8H1z"/></g></svg>') no-repeat center / contain;
           mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11"><g fill="none" stroke="%23000" stroke-width="1"><path d="M0 3h2V0h12v8h-2v3H0zm13-2H3v6h10zM2 4H1v4h1zm-1 6h10V8H1z"/></g></svg>') no-repeat center / contain;
   background-color: var(--bs-secondary-color, #6c757d); /* follows Bootstrap’s text-secondary */
-}
-
+ } 
+ 
 
 /* ===========================
    Brand & misc.
@@ -47,9 +79,198 @@ main a[target="_blank"]::after {
 .app-title { font-weight: 700; letter-spacing: 0.2px; }
 .img-50 { width: 50px; height: 50px; }
 
+button {
+  background-color: #732777;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+}
+
+button:hover {
+  background-color: #6c757d;}
+
+
+  /* focus ring for keyboard users */
+*:focus-visible {
+  outline: 3px solid #d4351c !important;
+  outline-offset: 2.5px;
+  box-shadow: none !important;
+}
+
+:root {
+  --bs-focus-ring-color: #d4351c;
+  --bs-focus-ring-width: 0.25rem;
+}
+
+.info-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  color:#222222;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.info-btn:hover {
+  background-color: #732777;
+  color:#fff;
+}
+
+/* ===========================
+Search
+============================*/
+.search {
+  display: flex;
+  align-items: stretch;
+}
+
+.search input {
+  height: 54px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+}
+
+.search .search-btn {
+  width: 50px;
+  height: 54px;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #732777;
+  color: white;
+  border: none;
+  border-radius: 0 0;
+  cursor: pointer;
+}
+
+.search .search-btn i {
+  font-size: 22px;
+}
+
+.search .search-btn:hover {
+  background-color: #6c757d;
+}
+
+
+/* Accordion styles */ 
+.accordion { 
+  margin-bottom: 1em; 
+  border-radius: 8px;
+  box-shadow: none;
+  overflow: visible;
+} 
+
+.accordion-toggle { 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; 
+  text-align: left; 
+  background: #ffffff; 
+  color: #00205b; 
+  padding: 0.5em 1em; 
+  font-size: 1.3em;
+  font-weight: bold;
+  cursor: pointer; 
+  transition: background 0.2s;
+  border-radius: 8px;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+.accordion-toggle:hover {
+  background: #00205b;
+  color: #ffffff;
+}
+
+button.accordion-toggle[aria-expanded="true"]:focus {
+  background: #00205b;
+  color: #ffffff;
+}
+
+.accordion-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-10px);
+  padding: 0.5em 1em; 
+  background: #ffffff;
+  border: 1px solid #0000002d;
+  margin-top: 12px;
+  border-radius: 6px;
+  box-shadow: none;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.accordion-arrow {
+  font-size: 28px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.accordion-toggle[aria-expanded="true"] .accordion-arrow {
+  transform: rotate(180deg);
+}
+
+/* ===========================
+   Tabs
+   =========================== */
+  .nav-tabs {
+    border-bottom-color: #afbdc5;
+  }
+  
+   .nav-tabs .nav-link {
+    background-color: #fff;
+    border-bottom-color: #afbdc5
+  }
+
+  .nav-tabs .nav-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+  }
+  .nav-tabs .nav-link.active {
+  background-color: #fff;
+  border-color: #afbdc5;
+  border-bottom-color: #fff;
+
+}
+
+.tab-content {
+  border: 1px solid #afbdc5;
+  border-top: 0;
+  padding: 1em;
+}
+
 /* ===========================
    Footer
    =========================== */
+/* Align footer with main content width */
+.footer .container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .footer {
   background-color: #00205b;
   color: #fff;
