@@ -230,6 +230,28 @@ button.accordion-toggle[aria-expanded="true"]:focus {
   transform: rotate(180deg);
 }
 
+/* ===========================
+   Tabs
+   =========================== */
+  .nav-tabs {
+    border-bottom-color: #afbdc5;
+  }
+  
+   .nav-tabs .nav-link {
+    background-color: #fff;
+    border-bottom-color: #afbdc5
+  }
+
+  .nav-tabs .nav-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+  }
+  .nav-tabs .nav-link.active {
+  background-color: #fff;
+  border-color: #afbdc5;
+  border-bottom-color: #fff;
+
+}
 
 /* ===========================
    Footer
