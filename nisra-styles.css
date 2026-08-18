@@ -185,13 +185,14 @@ Search
   text-align: left; 
   background: #ffffff; 
   color: #00205b; 
-  padding: 1em; 
+  padding: 0.5em 1em; 
   font-size: 1.3em;
   font-weight: bold;
   cursor: pointer; 
   transition: background 0.2s;
   border-radius: 8px;
   box-shadow: none;
+  margin-bottom: 0;
 }
 
 .accordion-toggle:hover {
@@ -209,7 +210,7 @@ button.accordion-toggle[aria-expanded="true"]:focus {
   opacity: 0;
   overflow: hidden;
   transform: translateY(-10px);
-  padding: 1em; 
+  padding: 0.5em 1em; 
   background: #ffffff;
   border: 1px solid #0000002d;
   margin-top: 12px;
@@ -223,6 +224,7 @@ button.accordion-toggle[aria-expanded="true"]:focus {
 
 .accordion-arrow {
   font-size: 28px;
+  line-height: 1;
   transition: transform 0.3s ease;
 }
 
@@ -251,6 +253,12 @@ button.accordion-toggle[aria-expanded="true"]:focus {
   border-color: #afbdc5;
   border-bottom-color: #fff;
 
+}
+
+.tab-content {
+  border: 1px solid #afbdc5;
+  border-top: 0;
+  padding: 1em;
 }
 
 /* ===========================
