@@ -98,58 +98,15 @@
   <div class="row justify-content-center">
     <div class="col-12 accordion py-4" id="textBoxAccordion">
 
+
       <!-- ==================================================
-           INFO BOX BUTTONS
-           Edit the button text and data-info-target values.
-           ================================================== -->
+     TEXT BOX BUTTONS
+     Generated automatically from the headings below.
+     ================================================== -->
 
-      <div class="row g-3 text-box-tabs">
+    <div class="row g-0 text-box-tabs"></div>
 
-        <div class="col p-0">
-          <h2 class="accordion-header h-100">
-            <button
-              class="accordion-button collapsed h-100 text-box-btn"
-              type="button"
-              data-text-box-target="text-box-example-1"
-              aria-expanded="false"
-              aria-controls="textBoxCollapse"
-            >
-              Example heading 1
-            </button>
-          </h2>
-        </div>
-
-        <div class="col p-0">
-          <h2 class="accordion-header h-100">
-            <button
-              class="accordion-button collapsed h-100 text-box-btn"
-              type="button"
-              data-text-box-target="text-box-example-2"
-              aria-expanded="false"
-              aria-controls="textBoxCollapse"
-            >
-              Example heading 2
-            </button>
-          </h2>
-        </div>
-
-        <div class="col p-0">
-          <h2 class="accordion-header h-100">
-            <button
-              class="accordion-button collapsed h-100 text-box-btn"
-              type="button"
-              data-text-box-target="text-box-example-3"
-              aria-expanded="false"
-              aria-controls="textBoxCollapse"
-            >
-              Example heading 3
-            </button>
-          </h2>
-        </div>
-
-      </div>
-
-
+      
       <!-- ==================================================
            DISPLAY AREA
            No need to edit this section.
@@ -177,12 +134,10 @@
 
 
       <!-- ==================================================
-           INFO BOX CONTENT
+           Text box content
            
-           Edit your content here.
-           
-           The section ID must match the data-info-target
-           on the corresponding button above.
+           Edit your headings and content here.
+           Buttons are generated automatically from each h2 in the function below
            ================================================== -->
 
       <div class="text-box-content">
@@ -382,17 +337,55 @@
 
   if (!textBoxes) return;
 
-  const collapseEl = textBoxes.querySelector("#textBoxCollapse");
-  const titleEl = textBoxes.querySelector(".text-box-title");
-  const bodyEl = textBoxes.querySelector(".text-box-body");
-  const btns = textBoxes.querySelectorAll(".text-box-btn");
+  // const collapseEl = textBoxes.querySelector("#textBoxCollapse");
+  // const titleEl = textBoxes.querySelector(".text-box-title");
+  // const bodyEl = textBoxes.querySelector(".text-box-body");
+  // const btns = textBoxes.querySelectorAll(".text-box-btn");
 
-  if (!collapseEl || !titleEl || !bodyEl || !btns.length) return;
+  // if (!collapseEl || !titleEl || !bodyEl || !btns.length) return;
+
+
+const collapseEl = textBoxes.querySelector("#textBoxCollapse");
+const titleEl = textBoxes.querySelector(".text-box-title");
+const bodyEl = textBoxes.querySelector(".text-box-body");
+const tabsEl = textBoxes.querySelector(".text-box-tabs");
+const sections = textBoxes.querySelectorAll(".text-box-content section");
+
+if (!collapseEl || !titleEl || !bodyEl || !tabsEl || !sections.length) return;
 
   const bsCollapse = bootstrap.Collapse.getOrCreateInstance(
-    collapseEl,
-    { toggle: false }
-  );
+  collapseEl,
+     { toggle: false }
+   );
+
+
+// Create a button for each content section
+sections.forEach((section) => {
+  const heading = section.querySelector("h2");
+
+  if (!heading) return;
+
+  const column = document.createElement("div");
+  column.className = "col p-0";
+
+  column.innerHTML = `
+    <h2 class="accordion-header h-100">
+      <button
+        class="accordion-button collapsed h-100 text-box-btn"
+        type="button"
+        data-text-box-target="${section.id}"
+        aria-expanded="false"
+        aria-controls="textBoxCollapse"
+      >
+        ${heading.textContent}
+      </button>
+    </h2>
+  `;
+
+  tabsEl.appendChild(column);
+});
+
+const btns = textBoxes.querySelectorAll(".text-box-btn");
 
 
   // ------------------------------------------
