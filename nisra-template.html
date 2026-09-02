@@ -77,7 +77,7 @@
         
     <h2>Buttons</h2>
     <p>Buttons change to grey on hover.</p>
-    <button>Action</button>
+    <button class="action-button">Action</button>
 
     <h2>Focus ring</h2>
     <p>Keyboard focus should be a bold red outline. Tab through the document to see it.</p>
@@ -86,19 +86,162 @@
 
     <div class="search">
       <input type="text" id="searchInput" placeholder="Enter postcode..."  aria-label="Search input">
-        <button class="search-btn" type="button" aria-label="Search">
+        <button class="search-btn" type="action-button" aria-label="Search">
          <i class="bi bi-search"></i>
         </button>
     </div>
             
-    <h2>Text box or accordion</h2>
+    <h2>Expanding text boxes</h2>
     <p>Definitions, notes or other content that may usually be hidden can go into an accordion like this.</p>
-    <p>For multiple accordions stacked vertically, apply styling like <a href="https://explore.nisra.gov.uk/local-stats/" >Local Stats.</a></p>
-    <p>The navy 'open' header is helpful to highlight which content is on display when you have multiple text boxes in a row. These should 'open' into a single row below the boxes as they do in <a href="https://nisra-tech-lab.github.io/dashboard-demo/">dashboard demo</a> or <a href="https://explore.nisra.gov.uk/ni-executive-spending/main.html">Executive spending</a> If they are stacked vertically the navy highlight is not necessary.</p>
-    <div class='accordion'> 
+    <p>The navy 'open' header is helpful to highlight which content is on display when you have multiple text boxes in a row. These should 'open' into a single row below the boxes as they do in <a href="https://nisra-tech-lab.github.io/dashboard-demo/">dashboard demo</a> or <a href="https://explore.nisra.gov.uk/ni-executive-spending/main.html">Executive spending</a>.</p>
+    <div id="text-boxes">
+  <div class="row justify-content-center">
+    <div class="col-12 accordion py-4" id="textBoxAccordion">
+
+      <!-- ==================================================
+           INFO BOX BUTTONS
+           Edit the button text and data-info-target values.
+           ================================================== -->
+
+      <div class="row g-3 text-box-tabs">
+
+        <div class="col p-0">
+          <h2 class="accordion-header h-100">
+            <button
+              class="accordion-button collapsed h-100 text-box-btn"
+              type="button"
+              data-text-box-target="text-box-example-1"
+              aria-expanded="false"
+              aria-controls="textBoxCollapse"
+            >
+              Example heading 1
+            </button>
+          </h2>
+        </div>
+
+        <div class="col p-0">
+          <h2 class="accordion-header h-100">
+            <button
+              class="accordion-button collapsed h-100 text-box-btn"
+              type="button"
+              data-text-box-target="text-box-example-2"
+              aria-expanded="false"
+              aria-controls="textBoxCollapse"
+            >
+              Example heading 2
+            </button>
+          </h2>
+        </div>
+
+        <div class="col p-0">
+          <h2 class="accordion-header h-100">
+            <button
+              class="accordion-button collapsed h-100 text-box-btn"
+              type="button"
+              data-text-box-target="text-box-example-3"
+              aria-expanded="false"
+              aria-controls="textBoxCollapse"
+            >
+              Example heading 3
+            </button>
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- ==================================================
+           DISPLAY AREA
+           No need to edit this section.
+           ================================================== -->
+
+      <div class="text-box-card-wrap">
+        <div class="card my-3 text-box-card">
+
+          <div
+            id="textBoxCollapse"
+            class="accordion-collapse collapse"
+            data-active-target=""
+          >
+            <div class="accordion-body">
+
+              <h2 class="text-box-title"></h2>
+
+              <div class="text-box-body"></div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ==================================================
+           INFO BOX CONTENT
+           
+           Edit your content here.
+           
+           The section ID must match the data-info-target
+           on the corresponding button above.
+           ================================================== -->
+
+      <div class="text-box-content">
+
+        <section id="text-box-example-1">
+          <h2>Definitions</h2>
+
+          <p>
+            Add the content for the first information box here.
+          </p>
+
+          <p>
+            You can use normal HTML here, including
+            <strong>bold text</strong>, links, lists and other
+            elements.
+          </p>
+        </section>
+
+
+        <section id="text-box-example-2">
+          <h2>Source information</h2>
+
+          <p>
+            Add the content for the second information box here.
+          </p>
+
+          <ul>
+            <li>Example list item</li>
+            <li>Another example item</li>
+            <li>And another</li>
+          </ul>
+        </section>
+
+
+        <section id="text-box-example-3">
+          <h2>Data description</h2>
+
+          <p>
+            Add the content for the third information box here.
+          </p>
+
+          <p>
+            Replace this placeholder content with whatever you need.
+          </p>
+        </section>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<h2>Accordions</h2>
+    <p>For multiple accordions stacked vertically, apply styling like this or <a href="https://explore.nisra.gov.uk/local-stats/" >Local Stats.</a></p>
+    <p>These would commonly be used to display charts or key statistic boxes or other non-text content.</p>
+    <div class='accordion simple-accordion'> 
   <button class='accordion-toggle' aria-expanded='false' 
           aria-controls='panel1' id='accordion1'> 
-    Definitions
+    Accordion heading
     <span class='accordion-arrow'>⌵</span>
   </button> 
   <div class='accordion-panel' id='panel1' role='region' 
@@ -146,6 +289,7 @@
       <div class="tab-pane" id="table" role="tabpanel" aria-labelledby="table-tab">Insert table here</div>
     </div>
   
+  </div>
   </div>
 </main>
 
@@ -218,7 +362,7 @@
       
     </footer>
 
-  </body>
+ 
 
   <script>
     /* info button expand function */
@@ -232,7 +376,124 @@
     infoContent.hidden = isExpanded;
       });
 
-  /* accordion text box function */ 
+  /* text boxes function */
+  function initialiseTextBoxes() {
+  const textBoxes = document.getElementById("text-boxes");
+
+  if (!textBoxes) return;
+
+  const collapseEl = textBoxes.querySelector("#textBoxCollapse");
+  const titleEl = textBoxes.querySelector(".text-box-title");
+  const bodyEl = textBoxes.querySelector(".text-box-body");
+  const btns = textBoxes.querySelectorAll(".text-box-btn");
+
+  if (!collapseEl || !titleEl || !bodyEl || !btns.length) return;
+
+  const bsCollapse = bootstrap.Collapse.getOrCreateInstance(
+    collapseEl,
+    { toggle: false }
+  );
+
+
+  // ------------------------------------------
+  // Set which button is currently active
+  // ------------------------------------------
+
+  function setActiveButton(activeBtn) {
+    btns.forEach((btn) => {
+      const isActive = btn === activeBtn;
+
+      btn.classList.toggle("collapsed", !isActive);
+      btn.setAttribute("aria-expanded", String(isActive));
+    });
+  }
+
+
+  // ------------------------------------------
+  // Copy the selected content into the card
+  // ------------------------------------------
+
+  function setContent(btn) {
+    const targetId = btn.dataset.textBoxTarget;
+    const source = textBoxes.querySelector(`#${targetId}`);
+
+    if (!source) return;
+
+    const sourceTitle = source.querySelector("h2");
+
+    titleEl.textContent = sourceTitle?.textContent || "";
+
+    const content = source.cloneNode(true);
+
+    // The heading is displayed separately,
+    // so remove it from the copied body content.
+    content.querySelector("h2")?.remove();
+
+    bodyEl.innerHTML = content.innerHTML;
+
+    collapseEl.dataset.activeTarget = targetId;
+  }
+
+
+  // ------------------------------------------
+  // Button behaviour
+  // ------------------------------------------
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.dataset.textBoxTarget;
+
+      const isOpen = collapseEl.classList.contains("show");
+
+      const activeTarget =
+        collapseEl.dataset.activeTarget || null;
+
+
+      // CLOSED
+      // Populate the card and animate it open.
+
+      if (!isOpen) {
+        setContent(btn);
+        setActiveButton(btn);
+        bsCollapse.show();
+
+        return;
+      }
+
+
+      // SAME BUTTON
+      // Animate the card closed.
+
+      if (activeTarget === targetId) {
+        setActiveButton(null);
+        bsCollapse.hide();
+
+        return;
+      }
+
+
+      // DIFFERENT BUTTON
+      // Card is already open, so simply swap
+      // the content without another animation.
+
+      setContent(btn);
+      setActiveButton(btn);
+    });
+  });
+
+
+  // ------------------------------------------
+  // Reset state after closing
+  // ------------------------------------------
+
+  collapseEl.addEventListener("hidden.bs.collapse", () => {
+    setActiveButton(null);
+    collapseEl.dataset.activeTarget = "";
+  });
+}
+initialiseTextBoxes();
+
+  /* accordion function */ 
   document.getElementById('accordion1').addEventListener('click', function() {
 
   const expanded = this.getAttribute('aria-expanded') === 'true';
@@ -251,5 +512,5 @@
   }
 });   
   </script>
-
+ </body>
 </html>
