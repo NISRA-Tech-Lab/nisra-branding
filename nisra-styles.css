@@ -362,23 +362,40 @@ button.accordion-toggle[aria-expanded="true"]:focus {
    Tabs
    =========================== */
   .nav-tabs {
-    border-bottom-color: #afbdc5;
+    border-bottom: 1px solid #afbdc5;
   }
   
    .nav-tabs .nav-link {
     background-color: #fff;
-    border-bottom-color: #afbdc5
+    border: 1px solid transparent;
+    border-bottom: 0;
+    border-radius: 0.4rem 0.4rem 0 0;
   }
 
-  .nav-tabs .nav-link:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
+.nav-tabs .nav-link:hover {
+   text-decoration: underline;
+   text-decoration-thickness: 3px;
+   border-color: #afbdc5 #afbdc5 transparent;
   }
-  .nav-tabs .nav-link.active {
+
+.nav-tabs .nav-link.active {
+  position: relative;
   background-color: #fff;
-  border-color: #afbdc5;
-  border-bottom-color: #fff;
+  border: 1px solid #afbdc5;
+  border-bottom: 0;
+  margin-bottom: -1px;
+}
 
+
+.nav-tabs .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 3px;
+  background: #fff;
+  z-index: 2;
 }
 
 .tab-content {
