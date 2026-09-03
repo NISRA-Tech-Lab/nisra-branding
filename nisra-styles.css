@@ -4,14 +4,13 @@
 
 :root {
   --bs-body-bg: #f2f5f8;
-}
-
-body {
-  background-color: var(--bs-body-bg) !important;
+   --bs-focus-ring-color: #d4351c;
+  --bs-focus-ring-width: 0.25rem;
 }
 
 
 body {
+   background-color: var(--bs-body-bg) !important;
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 18px;
   line-height: 1.5;           /* better readability than 1.0 */
@@ -79,7 +78,7 @@ main .bg-white {
 .app-title { font-weight: 700; letter-spacing: 0.2px; }
 .img-50 { width: 50px; height: 50px; }
 
-button {
+.action-button {
   background-color: #732777;
   color: #fff;
   font-size: 18px;
@@ -89,7 +88,7 @@ button {
   margin-bottom: 15px;
 }
 
-button:hover {
+.action-button:hover {
   background-color: #6c757d;}
 
 
@@ -98,11 +97,6 @@ button:hover {
   outline: 3px solid #d4351c !important;
   outline-offset: 2.5px;
   box-shadow: none !important;
-}
-
-:root {
-  --bs-focus-ring-color: #d4351c;
-  --bs-focus-ring-width: 0.25rem;
 }
 
 .info-btn {
@@ -168,9 +162,141 @@ Search
   background-color: #6c757d;
 }
 
+/* ===========================
+   Text boxes
+   =========================== */
+
+.text-box-content {
+  display: none;
+}
+
+/* Container for the row of text-box buttons */
+.text-box-tabs {
+  margin-bottom: 0;
+}
+
+/* Individual text-box buttons */
+.text-box-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+
+  text-align: left;
+  background: #ffffff;
+  color: #00205b;
+
+  padding: 0.5em 1em;
+
+  font-size:21px;
+
+  cursor: pointer;
+
+  border: 1px solid #0000002d;
+  border-radius: 0;
+
+  box-shadow: none !important;
+  margin-bottom: 0;
+
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+/* Avoid doubled borders between adjacent buttons */
+.text-box-tabs > .col:not(:first-child) .text-box-btn {
+  border-left: 0;
+}
+
+
+/* Remove Bootstrap's default accordion-button shadow */
+.text-box-btn:not(.collapsed) {
+  box-shadow: none;
+}
+
+/* Hover */
+.text-box-btn:hover {
+  background: #00205b;
+  color: #ffffff;
+}
+
+/* Selected/open text box */
+.text-box-btn[aria-expanded="true"] {
+  background: #00205b;
+  color: #ffffff;
+}
+
+/* Keep selected button navy when focused */
+.text-box-btn[aria-expanded="true"]:focus {
+  background: #00205b;
+  color: #ffffff;
+}
+
+/* White chevron on navy background */
+.text-box-btn:hover::after,
+.text-box-btn[aria-expanded="true"]::after {
+  filter: brightness(0) invert(1);
+}
+
+/* -------------------------------------------
+   First and last button corners
+   ------------------------------------------- */
+
+.text-box-tabs > .col:first-child .text-box-btn {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.text-box-tabs > .col:last-child .text-box-btn {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+
+/* -------------------------------------------
+   Bootstrap chevron
+   ------------------------------------------- */
+
+/* Default chevron */
+.text-box-btn::after {
+  transition: transform 0.3s ease;
+}
+
+/* Bootstrap already rotates this when .collapsed is removed,
+   so no extra JavaScript is needed. */
+
+
+/* -------------------------------------------
+   Expanded content
+   ------------------------------------------- */
+
+.text-box-card {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.text-box-card .accordion-collapse.show,
+.text-box-card .accordion-collapse.collapsing {
+  background: #ffffff;
+  border: 1px solid #0000002d;
+  border-radius: 6px;
+}
+
+.text-box-card .accordion-body {
+  padding: 0.5em 1em;
+}
+
+.text-box-title {
+  color: #00205b;
+  font-weight: bold;
+}
+
 
 /* Accordion styles */ 
-.accordion { 
+.simple-accordion { 
   margin-bottom: 1em; 
   border-radius: 8px;
   box-shadow: none;
@@ -187,7 +313,7 @@ Search
   color: #00205b; 
   padding: 0.5em 1em; 
   font-size: 1.3em;
-  font-weight: bold;
+  /* font-weight: bold; */
   cursor: pointer; 
   transition: background 0.2s;
   border-radius: 8px;
@@ -236,23 +362,40 @@ button.accordion-toggle[aria-expanded="true"]:focus {
    Tabs
    =========================== */
   .nav-tabs {
-    border-bottom-color: #afbdc5;
+    border-bottom: 1px solid #afbdc5;
   }
   
    .nav-tabs .nav-link {
     background-color: #fff;
-    border-bottom-color: #afbdc5
+    border: 1px solid transparent;
+    border-bottom: 0;
+    border-radius: 0.4rem 0.4rem 0 0;
   }
 
-  .nav-tabs .nav-link:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
+.nav-tabs .nav-link:hover {
+   text-decoration: underline;
+   text-decoration-thickness: 3px;
+   border-color: #afbdc5 #afbdc5 transparent;
   }
-  .nav-tabs .nav-link.active {
+
+.nav-tabs .nav-link.active {
+  position: relative;
   background-color: #fff;
-  border-color: #afbdc5;
-  border-bottom-color: #fff;
+  border: 1px solid #afbdc5;
+  border-bottom: 0;
+  margin-bottom: -1px;
+}
 
+
+.nav-tabs .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 3px;
+  background: #fff;
+  z-index: 2;
 }
 
 .tab-content {
